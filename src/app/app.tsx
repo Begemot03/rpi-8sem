@@ -7,6 +7,7 @@ import OfferPage from "../pages/offer-page";
 import LoginPage from "../pages/login-page";
 import FavoritesPage from "../pages/favorites-page";
 import PrivateRoute from "../components/private-route/private-route";
+import mockOffers from "../mocks/offer";
 
 const App: FC = () => {
 	return (
@@ -14,7 +15,12 @@ const App: FC = () => {
 			<Routes>
 				<Route
 					path={AppRoute.Main}
-					element={<MainPage rentalOffersCount={Setting.rentOffersCount} />}
+					element={
+						<MainPage
+							rentalOffersCount={Setting.rentOffersCount}
+							offers={mockOffers}
+						/>
+					}
 				/>
 				<Route
 					path={AppRoute.Favorites}

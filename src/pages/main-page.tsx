@@ -1,12 +1,14 @@
 import { FC } from "react";
 import CitiesCard from "../components/cities-card/cities-card";
 import Logo from "../components/logo";
+import { FullOffer } from "../types/offer";
 
 type MainPageProps = {
 	rentalOffersCount: number;
+	offers: FullOffer[];
 };
 
-const MainPage: FC<MainPageProps> = ({ rentalOffersCount }) => {
+const MainPage: FC<MainPageProps> = ({ rentalOffersCount, offers }) => {
 	return (
 		<div className="page page--gray page--main">
 			<header className="header">
@@ -112,11 +114,9 @@ const MainPage: FC<MainPageProps> = ({ rentalOffersCount }) => {
 								</ul>
 							</form>
 							<div className="cities__places-list places__list tabs__content">
-								<CitiesCard />
-								<CitiesCard />
-								<CitiesCard />
-								<CitiesCard />
-								<CitiesCard />
+								{offers.map((offer) => (
+									<CitiesCard key={offer.ld} offer={offer} />
+								))}
 							</div>
 						</section>
 						<div className="cities__right-section">
