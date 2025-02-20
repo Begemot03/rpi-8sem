@@ -1,4 +1,5 @@
 import { FC } from "react";
+import Logo from "../components/logo";
 
 const FavoritesPage: FC = () => {
 	return (
@@ -7,15 +8,7 @@ const FavoritesPage: FC = () => {
 				<div className="container">
 					<div className="header__wrapper">
 						<div className="header__left">
-							<a className="header__logo-link" href="main.html">
-								<img
-									className="header__logo"
-									src="img/logo.svg"
-									alt="Rent service logo"
-									width="81"
-									height="41"
-								/>
-							</a>
+							<Logo />
 						</div>
 						<nav className="header__nav">
 							<ul className="header__nav-list">
@@ -142,7 +135,7 @@ const FavoritesPage: FC = () => {
 											</div>
 											<div className="place-card__rating rating">
 												<div className="place-card__stars rating__stars">
-													<span style={{width: "80%"}}></span>
+													<span style={{ width: "80%" }}></span>
 													<span className="visually-hidden">Rating</span>
 												</div>
 											</div>
