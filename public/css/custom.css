@@ -1,0 +1,17 @@
+.notfound {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.notfound:first-child {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.notfound:last-child {
+    font-size: 1rem;
+}
