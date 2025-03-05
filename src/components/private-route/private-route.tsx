@@ -12,11 +12,11 @@ const PrivateRoute: FC<PropsWithChildren<PrivateRouteProps>> = ({
 	authStatus,
 	children,
 }) => {
-	return authStatus === AuthStatus.Auth ? (
-		children
-	) : (
-		<Navigate to={AppRoute.Login} />
-	);
+	if(authStatus !== AuthStatus.Auth) {
+		return <Navigate to={AppRoute.Login} />
+	}
+
+	return <>{children}</>;
 };
 
 export default PrivateRoute;

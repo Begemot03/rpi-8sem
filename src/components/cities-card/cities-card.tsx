@@ -1,8 +1,10 @@
 import { FC } from "react";
-import { FullOffer } from "../../types/offer";
+import { Link } from "react-router-dom";
+import { AppRoute } from "../../const";
+import { FullOffer, OffersList } from "../../types/offer";
 
 interface CitiesCardProps {
-	offer: FullOffer;
+	offer: OffersList;
 }
 
 const CitiesCard: FC<CitiesCardProps> = ({ offer }) => {
@@ -14,15 +16,15 @@ const CitiesCard: FC<CitiesCardProps> = ({ offer }) => {
 				</div>
 			)}
 			<div className="cities__image-wrapper place-card__image-wrapper">
-				<a href="#">
+				<Link to={`${AppRoute.Offer}/${offer.id}`}>
 					<img
 						className="place-card__image"
-						src={offer.images[0]}
+						src={`img/${offer.previewImage}`}
 						width="260"
 						height="200"
 						alt={offer.title}
 					/>
-				</a>
+				</Link>
 			</div>
 			<div className="place-card__info">
 				<div className="place-card__price-wrapper">

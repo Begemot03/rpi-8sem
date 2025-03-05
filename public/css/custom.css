@@ -64,3 +64,9 @@
 .notfound a:hover {
     color: #0056b3;
 }
+
+.place-card__image {
+    width: 260px !important;
+    height: 260px !important;
+    object-fit: cover !important;
+}

@@ -16,7 +16,7 @@ type HostOffer = {
 }
 
 export type FullOffer = {
-    ld: string;
+    id: string;
     title: string;
     type: string;
     price: number;
@@ -31,4 +31,17 @@ export type FullOffer = {
     host: HostOffer;
     images: string[];
     maxAdults: number;
+}
+
+export type OffersList = {
+    id: string;
+    title: string;
+    type: string;
+    price: number;
+    city: CityOffer;
+    location: OfferLocation;
+    isFavorite: boolean;
+    isPremium: boolean;
+    rating: number;
+    previewImage: string;
 }

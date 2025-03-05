@@ -10,7 +10,7 @@ const Logo: FC = () => {
 		>
 			<img
 				className="header__logo"
-				src="img/logo.svg"
+				src="/img/logo.svg"
 				alt="Rent service logo"
 				width="81"
 				height="41"

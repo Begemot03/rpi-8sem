@@ -8,6 +8,7 @@ import LoginPage from "../pages/login-page";
 import FavoritesPage from "../pages/favorites-page";
 import PrivateRoute from "../components/private-route/private-route";
 import mockOffers from "../mocks/offer";
+import mockOffersList from "../mocks/offers-list";
 
 const App: FC = () => {
 	return (
@@ -18,7 +19,8 @@ const App: FC = () => {
 					element={
 						<MainPage
 							rentalOffersCount={Setting.rentOffersCount}
-							offers={mockOffers}
+							offers={mockOffers} 
+							offersList={mockOffersList}						
 						/>
 					}
 				/>
@@ -26,12 +28,12 @@ const App: FC = () => {
 					path={AppRoute.Favorites}
 					element={
 						<PrivateRoute authStatus={AuthStatus.Auth}>
-							<FavoritesPage />
+							<FavoritesPage offersList={mockOffersList} />
 						</PrivateRoute>
 					}
 				/>
 				<Route path={AppRoute.Login} element={<LoginPage />} />
-				<Route path={AppRoute.Offer} element={<OfferPage />} />
+				<Route path={`${AppRoute.Offer}/:id`} element={<OfferPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 		</BrowserRouter>

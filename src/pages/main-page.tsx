@@ -1,14 +1,16 @@
 import { FC } from "react";
 import CitiesCard from "../components/cities-card/cities-card";
+import CitiesCardList from "../components/cities-card/cities-card-list";
 import Logo from "../components/logo";
-import { FullOffer } from "../types/offer";
+import { FullOffer, OffersList } from "../types/offer";
 
 type MainPageProps = {
 	rentalOffersCount: number;
+	offersList: OffersList[];
 	offers: FullOffer[];
 };
 
-const MainPage: FC<MainPageProps> = ({ rentalOffersCount, offers }) => {
+const MainPage: FC<MainPageProps> = ({ rentalOffersCount, offers, offersList }) => {
 	return (
 		<div className="page page--gray page--main">
 			<header className="header">
@@ -113,11 +115,7 @@ const MainPage: FC<MainPageProps> = ({ rentalOffersCount, offers }) => {
 									</li>
 								</ul>
 							</form>
-							<div className="cities__places-list places__list tabs__content">
-								{offers.map((offer) => (
-									<CitiesCard key={offer.ld} offer={offer} />
-								))}
-							</div>
+							<CitiesCardList offers={offersList} />
 						</section>
 						<div className="cities__right-section">
 							<section className="cities__map map"></section>
