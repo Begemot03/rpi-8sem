@@ -3,7 +3,7 @@ import { FullOffer, OffersList } from "../../types/offer";
 import CitiesCard from "./cities-card";
 
 interface CitiesCardListProps {
-	offers: OffersList[];
+	offers: FullOffer[];
 }
 
 const CitiesCardList: FC<CitiesCardListProps> = ({ offers }) => {

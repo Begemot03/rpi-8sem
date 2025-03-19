@@ -16,6 +16,7 @@ const CitiesMap: FC<CitiesMapProps> = ({ offers }) => {
 	return (
 		<section className="map" style={{ width: "100%", height: "100%" }}>
 			<MapContainer
+				key={pos.join("-")}
 				center={pos}
 				zoom={6}
 				scrollWheelZoom={false}

@@ -2,12 +2,17 @@ import { FC } from "react";
 import { Link } from "react-router-dom";
 import { AppRoute } from "../../const";
 import { FullOffer, OffersList } from "../../types/offer";
+import mockOffersList from "../../mocks/offers-list";
 
 interface CitiesCardProps {
-	offer: OffersList;
+	offer: FullOffer;
 }
 
 const CitiesCard: FC<CitiesCardProps> = ({ offer }) => {
+	const previewImage = mockOffersList.find(
+		(_offer) => _offer.id == offer.id
+	)?.previewImage;
+
 	return (
 		<article className="cities__card place-card">
 			{offer.isPremium && (
@@ -19,7 +24,7 @@ const CitiesCard: FC<CitiesCardProps> = ({ offer }) => {
 				<Link to={`${AppRoute.Offer}/${offer.id}`}>
 					<img
 						className="place-card__image"
-						src={`img/${offer.previewImage}`}
+						src={`img/${previewImage}`}
 						width="260"
 						height="200"
 						alt={offer.title}
