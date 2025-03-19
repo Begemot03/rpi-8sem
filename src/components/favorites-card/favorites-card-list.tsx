@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { FullOffer, OffersList } from "../../types/offer";
+import { OffersList } from "../../types/offer";
 import FavoritesCard from "./favorites-card";
 
 interface FavoritesCardListProps {

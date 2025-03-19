@@ -4,14 +4,17 @@ import Logo from "../components/logo";
 import OfferCommentForm from "../components/offer/offer-comment-form";
 import mockOffers from "../mocks/offer";
 import NotFoundPage from "./not-found-page";
+import CitiesMap from "../components/cities-map/cities-map";
+import ReviewList from "../components/reviews/review-list";
+import mockReviews from "../mocks/reviews";
 
 const OfferPage: FC = () => {
 	const { id } = useParams();
 
-	const offer = mockOffers.find(offer => offer.id == id);
+	const offer = mockOffers.find((offer) => offer.id == id);
 
-	if(offer == undefined) {
-		return <NotFoundPage />
+	if (offer == undefined) {
+		return <NotFoundPage />;
 	}
 
 	return (
@@ -51,17 +54,16 @@ const OfferPage: FC = () => {
 				<section className="offer">
 					<div className="offer__gallery-container container">
 						<div className="offer__gallery">
-							{
-								offer.images.length > 0 && offer.images.map(imgSrc => (
-									<div className="offer__image-wrapper">
+							{offer.images.length > 0 &&
+								offer.images.map((imgSrc) => (
+									<div className="offer__image-wrapper" key={imgSrc}>
 										<img
 											className="offer__image"
 											src={`/img/${imgSrc}`}
 											alt="Photo studio"
 										/>
 									</div>
-								))
-							}
+								))}
 						</div>
 					</div>
 					<div className="offer__container container">
@@ -70,9 +72,7 @@ const OfferPage: FC = () => {
 								<span>Premium</span>
 							</div>
 							<div className="offer__name-wrapper">
-								<h1 className="offer__name">
-									{offer.title}
-								</h1>
+								<h1 className="offer__name">{offer.title}</h1>
 								<button className="offer__bookmark-button button" type="button">
 									<svg className="offer__bookmark-icon" width="31" height="33">
 										<use xlinkHref="#icon-bookmark"></use>
@@ -84,10 +84,14 @@ const OfferPage: FC = () => {
 							</div>
 							<div className="offer__rating rating">
 								<div className="offer__stars rating__stars">
-									<span style={{ width: `${(offer.rating / 5) * 100}%` }}></span>
+									<span
+										style={{ width: `${(offer.rating / 5) * 100}%` }}
+									></span>
 									<span className="visually-hidden">Rating</span>
 								</div>
-								<span className="offer__rating-value rating__value">{offer.rating}</span>
+								<span className="offer__rating-value rating__value">
+									{offer.rating}
+								</span>
 							</div>
 							<ul className="offer__features">
 								<li className="offer__feature offer__feature--entire">
@@ -107,9 +111,12 @@ const OfferPage: FC = () => {
 							<div className="offer__inside">
 								<h2 className="offer__inside-title">What&apos;s inside</h2>
 								<ul className="offer__inside-list">
-									{offer.goods.length > 0 && offer.goods.map(good => (
-										<li className="offer__inside-item">{good}</li>
-									))}
+									{offer.goods.length > 0 &&
+										offer.goods.map((good) => (
+											<li className="offer__inside-item" key={good}>
+												{good}
+											</li>
+										))}
 								</ul>
 							</div>
 							<div className="offer__host">
@@ -125,57 +132,33 @@ const OfferPage: FC = () => {
 										/>
 									</div>
 									<span className="offer__user-name">{offer.host.name}</span>
-									{
-										offer.host.isPro && <span className="offer__user-status">Pro</span>
-									}
+									{offer.host.isPro && (
+										<span className="offer__user-status">Pro</span>
+									)}
 								</div>
 								<div className="offer__description">
-									<p className="offer__text">
-										{offer.description}
-									</p>
+									<p className="offer__text">{offer.description}</p>
 								</div>
 							</div>
 							<section className="offer__reviews reviews">
 								<h2 className="reviews__title">
-									Reviews &middot; <span className="reviews__amount">1</span>
+									Reviews &middot;{" "}
+									<span className="reviews__amount">
+										{mockReviews.filter((review) => id == review.offerId).length}
+									</span>
 								</h2>
-								<ul className="reviews__list">
-									<li className="reviews__item">
-										<div className="reviews__user user">
-											<div className="reviews__avatar-wrapper user__avatar-wrapper">
-												<img
-													className="reviews__avatar user__avatar"
-													src="/img/avatar-max.jpg"
-													width="54"
-													height="54"
-													alt="Reviews avatar"
-												/>
-											</div>
-											<span className="reviews__user-name">Max</span>
-										</div>
-										<div className="reviews__info">
-											<div className="reviews__rating rating">
-												<div className="reviews__stars rating__stars">
-													<span style={{ width: "80%" }}></span>
-													<span className="visually-hidden">Rating</span>
-												</div>
-											</div>
-											<p className="reviews__text">
-												A quiet cozy and picturesque that hides behind a a river
-												by the unique lightness of Amsterdam. The building is
-												green and from 18th century.
-											</p>
-											<time className="reviews__time" dateTime="2019-04-24">
-												April 2019
-											</time>
-										</div>
-									</li>
-								</ul>
+								<ReviewList
+									reviews={mockReviews.filter(
+										(review) => id == review.offerId
+									)}
+								/>
 								<OfferCommentForm />
 							</section>
 						</div>
 					</div>
-					<section className="offer__map map"></section>
+					<section className="offer__map map">
+						<CitiesMap offers={[offer]} />
+					</section>
 				</section>
 				<div className="container">
 					<section className="near-places places">

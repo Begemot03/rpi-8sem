@@ -1,8 +1,10 @@
 import { FC } from "react";
-import CitiesCard from "../components/cities-card/cities-card";
 import CitiesCardList from "../components/cities-card/cities-card-list";
 import Logo from "../components/logo";
 import { FullOffer, OffersList } from "../types/offer";
+import CitiesMap from "../components/cities-map/cities-map";
+import mockOffers from "../mocks/offer";
+import mockOffersList from "../mocks/offers-list";
 
 type MainPageProps = {
 	rentalOffersCount: number;
@@ -10,7 +12,18 @@ type MainPageProps = {
 	offers: FullOffer[];
 };
 
-const MainPage: FC<MainPageProps> = ({ rentalOffersCount, offers, offersList }) => {
+const coordinates = [
+	{ x: 52.3909553943508, y: 4.85309666406198 },
+	{ x: 52.3609553943508, y: 4.85309666406198 },
+	{ x: 52.3909553943508, y: 4.929309666406198 },
+	{ x: 52.3809553943508, y: 4.939309666406198 },
+];
+
+const MainPage: FC<MainPageProps> = ({
+	rentalOffersCount,
+	offers,
+	offersList,
+}) => {
 	return (
 		<div className="page page--gray page--main">
 			<header className="header">
@@ -118,7 +131,7 @@ const MainPage: FC<MainPageProps> = ({ rentalOffersCount, offers, offersList }) 
 							<CitiesCardList offers={offersList} />
 						</section>
 						<div className="cities__right-section">
-							<section className="cities__map map"></section>
+							<CitiesMap offers={mockOffers} />
 						</div>
 					</div>
 				</div>
